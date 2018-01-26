@@ -11,6 +11,17 @@ var links = [
   {source: nodes[2], target: nodes[3]}
 ];
 
+var screens = [
+  'search',
+  'results',
+  'details'
+];
+
+var connections = [
+  {source: screens[0], target: screens[1]},
+  {source: screens[1], target: screens[2]}
+];
+
 var width = 700;
 var height = 500;
 
@@ -20,16 +31,16 @@ var svg = d3.select("body")
             .attr("height", height);
 
 svg.selectAll("circle .node")
-    .data(nodes)
+    .data(screens)
     .enter()
     .append("circle")
     .attr("class", "node")
-    .attr("cx", d => d[0] * 5 + 20)
-    .attr("cy", d => d[1])
+    .attr("cx", d, i => i * 50)
+    .attr("cy", height / 2)
     .attr("r", 10);
 
 svg.selectAll("line .link")
-    .data(links)
+    .data(connections)
     .enter()
     .append("line")
     .attr("class", "link")
