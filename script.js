@@ -21,7 +21,7 @@ var connections = [
   {source: screens[0], target: screens[1]},
   {source: screens[1], target: screens[2]}
 ];
-console.log(screens.indexOf(connections[1].source));
+
 var width = 700;
 var height = 500;
 
@@ -38,7 +38,7 @@ svg.selectAll("circle .node")
     .attr("cx", (d, i) => i * 50 + 10)
     .attr("cy", height / 2)
     .attr("r", 10);
-var hundred = 100;
+
 
 svg.selectAll("line .link")
     .data(connections)
