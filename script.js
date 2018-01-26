@@ -21,7 +21,7 @@ var connections = [
   {source: screens[0], target: screens[1]},
   {source: screens[1], target: screens[2]}
 ];
-
+console.log(screens.indexOf(connections[1].source));
 var width = 700;
 var height = 500;
 
@@ -35,18 +35,19 @@ svg.selectAll("circle .node")
     .enter()
     .append("circle")
     .attr("class", "node")
-    .attr("cx", d, i => i * 50)
+    .attr("cx", (d, i) => i * 50 + 10)
     .attr("cy", height / 2)
     .attr("r", 10);
+var hundred = 100;
 
 svg.selectAll("line .link")
     .data(connections)
     .enter()
     .append("line")
     .attr("class", "link")
-    .attr("x1", d => d.source[0] * 5 + 20)
-    .attr("x2", d => d.target[0] * 5 + 20)
-    .attr("y1", d => d.source[1])
-    .attr("y2", d => d.target[1])
+    .attr("x1", d => screens.indexOf(d.source) * 50 + 10)
+    .attr("x2", d => screens.indexOf(d.target) * 50 + 10)
+    .attr("y1", height / 2)
+    .attr("y2", height / 2)
     .attr("shape-rendering", "crispEdges")
     .style("stroke", "black");
